@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import '../public/assets/fonts/myriad-pro/style.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +8,79 @@
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
+
+body{
+  font-family: 'DM Sans',sans-serif;
+  /* font-style: normal; */
+  font-weight: 300;
+}
+
+/* h1,h2,h3,h4,h5,h6{
+  font-family:serif;
+} */
+
+/* Custom Slider Styling */
+/* Gold slider like the reference image (filled left track, light right, white knob, bubble) */
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 9999px;
+  background: transparent; /* gradient set inline */
+  cursor: pointer;
+}
+
+.range-input:focus {
+  outline: none;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  border: 1px solid #e5e7eb;
+}
+
+.range-input::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+.range-bubble {
+  position: absolute;
+  top: -34px;
+  transform: translateX(-50%);
+  background: #B59F5B;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.range-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -6px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #B59F5B;
+}
 
 @layer base {
   :root {
@@ -101,6 +177,22 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground ;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 }
