@@ -26,7 +26,7 @@ const Sidebar = () => {
             }`}
           >
             <div
-              className={`to-primary absolute inset-0 bg-gradient-to-r from-blue-600 transition-transform duration-300 ${
+              className={`to-blue-950 absolute inset-0 bg-gradient-to-r from-blue-600 transition-transform duration-300 ${
                 location.pathname === item.link
                   ? "translate-x-0"
                   : "-translate-x-full group-hover:translate-x-0"
