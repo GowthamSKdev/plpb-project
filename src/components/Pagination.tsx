@@ -39,9 +39,8 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
     <div className="flex items-center justify-center gap-3">
       {/* Previous Button */}
       <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="flex items-center gap-2 px-4 py-2 border text-black hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+        onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
+        className="flex items-center gap-2 px-4 py-2 border text-black hover:bg-gray-50 transition-colors duration-200"
         style={{ 
           backgroundColor: 'white', 
           borderColor: '#8B7B5B',
@@ -79,9 +78,8 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
 
       {/* Next Button */}
       <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="flex items-center gap-2 px-4 py-2 border text-black hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+        onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
+        className="flex items-center gap-2 px-4 py-2 border text-black hover:bg-gray-50 transition-colors duration-200"
         style={{ 
           backgroundColor: 'white', 
           borderColor: '#8B7B5B',

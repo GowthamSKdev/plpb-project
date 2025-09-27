@@ -110,6 +110,10 @@ const CreateBlog = ({ setOpenCreateBlog, handleSubmit }) => {
                 <option value="">Select Category</option>
                 <option value="Investment Insights">Investment Insights</option>
                 <option value="Industry Trends">Industry Trends</option>
+                <option value="Spaces & Design">Spaces & Design</option>
+                <option value="Leadership Voices">Leadership Voices</option>
+                <option value="Our Impact">Our Impact</option>
+                <option value="Guides & Resources">Guides & Resources</option>
               </select>
             </div>
 

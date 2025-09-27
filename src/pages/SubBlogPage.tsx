@@ -329,7 +329,7 @@ export const SubBlogPage = () => {
         {/* Main Article Image */}
         <div className="mb-8">
           <img
-            src="/assets/Images/Subblog.png"
+            src={blog.image_url}
             alt={blog.title}
             className="w-full h-96 object-cover shadow-lg"
           />
@@ -456,37 +456,19 @@ export const SubBlogPage = () => {
           </form>
         </div>
 
-        {/* Reviews Section */}
-        <div className="mb-12">
-          <h2 className="text-4xl font-normal text-gray-900 mb-2">
-            {loadingReviews
-              ? "Loading Reviews..."
-              : `${reviews.length} Reviews`}
-          </h2>
-          <div
-            className="w-20 h-0.5 mb-6"
-            style={{ backgroundColor: "#8B7B5B" }}
-          ></div>
+        {/* Reviews Section - Only show if there are reviews */}
+        {!loadingReviews && reviews.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-4xl font-normal text-gray-900 mb-2">
+              {reviews.length} Reviews
+            </h2>
+            <div
+              className="w-20 h-0.5 mb-6"
+              style={{ backgroundColor: "#8B7B5B" }}
+            ></div>
 
-          {/* Loading Reviews */}
-          {loadingReviews && (
-            <div className="text-center py-8">
-              <p className="text-gray-500">Loading reviews...</p>
-            </div>
-          )}
-
-          {/* No Reviews */}
-          {!loadingReviews && reviews.length === 0 && (
-            <div className="text-center py-8">
-              <p className="text-gray-500">
-                No reviews yet. Be the first to review this blog!
-              </p>
-            </div>
-          )}
-
-          {/* Reviews List */}
-          {!loadingReviews &&
-            reviews.map((review, index) => (
+            {/* Reviews List */}
+            {reviews.map((review, index) => (
               <div
                 key={review._id || index}
                 className="flex gap-4 mb-6 pb-6"
@@ -544,7 +526,8 @@ export const SubBlogPage = () => {
                 </div>
               </div>
             ))}
-        </div>
+          </div>
+        )}
 
         {/* Related Posts Section */}
         <div className="mb-12">

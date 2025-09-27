@@ -43,7 +43,7 @@ export const BlogPage = () => {
   const [blogs, setBlogs] = useState<ApiBlog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const postsPerPage = 5;
+  const postsPerPage = 6;
 
   // Fetch blogs from API
   useEffect(() => {
