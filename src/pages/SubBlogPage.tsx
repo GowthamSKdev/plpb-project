@@ -291,9 +291,9 @@ export const SubBlogPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white" style={{ zoom: "1.25" }}>
+    <div className="min-h-screen bg-white">
       {/* Hero Image Section */}
-      <div className="relative w-full h-[500px] overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden">
         <img
           src="/assets/Images/Subblog.png"
           alt={blog.title}
@@ -302,13 +302,13 @@ export const SubBlogPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-16 max-w-6xl">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-16 max-w-6xl">
         {/* Article Title and Intro */}
-        <div className="mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-8">
             {/* Left Column - Heading */}
             <div className="lg:w-1/2">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                 {blog.title}
               </h1>
               <div
@@ -319,7 +319,7 @@ export const SubBlogPage = () => {
 
             {/* Right Column - Description */}
             <div className="lg:w-1/2">
-              <p className="text-gray-700 leading-relaxed text-base">
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                 {blog.description}
               </p>
             </div>
@@ -327,16 +327,16 @@ export const SubBlogPage = () => {
         </div>
 
         {/* Main Article Image */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <img
             src={blog.image_url}
             alt={blog.title}
-            className="w-full h-96 object-cover shadow-lg"
+            className="w-full h-64 sm:h-80 lg:h-96 object-cover shadow-lg"
           />
         </div>
 
         {/* Content Date and Side Button Box */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
           <div className="flex flex-col">
             <div className="text-gray-700 text-sm">
               Posted On:{" "}
@@ -352,7 +352,7 @@ export const SubBlogPage = () => {
             ></div>
           </div>
           <div
-            className="text-white px-4 py-2 text-sm font-medium"
+            className="text-white px-4 py-2 text-sm font-medium self-start"
             style={{ backgroundColor: "#78602C" }}
           >
             {blog.category}
@@ -360,25 +360,25 @@ export const SubBlogPage = () => {
         </div>
 
         {/* Article Content */}
-        <div className="prose prose-lg max-w-none mb-12">
+        <div className="prose prose-sm sm:prose-base lg:prose-lg max-w-none mb-8 sm:mb-12">
           <div
-            className="text-gray-700 leading-relaxed"
+            className="text-gray-700 leading-relaxed text-sm sm:text-base"
             dangerouslySetInnerHTML={{ __html: blog.html_content }}
           />
         </div>
 
         {/* Add a Review Section */}
-        <div className="bg-white p-8 mb-12">
-          <h2 className="text-4xl font-normal text-gray-900 mb-2">
+        <div className="bg-white p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-900 mb-2">
             Add a Review
           </h2>
           <div
-            className="w-20 h-0.5 mb-6"
+            className="w-20 h-0.5 mb-4 sm:mb-6"
             style={{ backgroundColor: "#8B7B5B" }}
           ></div>
 
           {/* Star Rating */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
                 key={star}
@@ -388,7 +388,7 @@ export const SubBlogPage = () => {
                 className="focus:outline-none transform hover:scale-110 transition-transform duration-200"
               >
                 <SharpStar
-                  className="w-10 h-10"
+                  className="w-8 h-8 sm:w-10 sm:h-10"
                   style={{
                     color:
                       star <= (hoveredRating || rating) ? "#8B7B5B" : "#D1D5DB",
@@ -410,7 +410,7 @@ export const SubBlogPage = () => {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border focus:outline-none focus:ring-1 focus:ring-[#8B7B5B] focus:border-[#8B7B5B]"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border focus:outline-none focus:ring-1 focus:ring-[#8B7B5B] focus:border-[#8B7B5B] text-sm sm:text-base"
                 style={{ borderColor: "#8B7B5B" }}
                 required
               />
@@ -421,18 +421,18 @@ export const SubBlogPage = () => {
                 placeholder="Share your thoughts..."
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                rows={4}
-                className="w-full px-4 py-3 border focus:outline-none focus:ring-1 focus:ring-[#8B7B5B] focus:border-[#8B7B5B] resize-none"
+                rows={3}
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 border focus:outline-none focus:ring-1 focus:ring-[#8B7B5B] focus:border-[#8B7B5B] resize-none text-sm sm:text-base"
                 style={{ borderColor: "#8B7B5B" }}
                 required
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <button
                 type="submit"
                 disabled={submittingReview}
-                className="text-white px-6 py-3 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="text-white px-4 sm:px-6 py-2 sm:py-3 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                 style={{ backgroundColor: "#78602C" }}
               >
                 {submittingReview ? "Submitting..." : "Post"}
@@ -458,12 +458,12 @@ export const SubBlogPage = () => {
 
         {/* Reviews Section - Only show if there are reviews */}
         {!loadingReviews && reviews.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-4xl font-normal text-gray-900 mb-2">
+          <div className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-900 mb-2">
               {reviews.length} Reviews
             </h2>
             <div
-              className="w-20 h-0.5 mb-6"
+              className="w-20 h-0.5 mb-4 sm:mb-6"
               style={{ backgroundColor: "#8B7B5B" }}
             ></div>
 
@@ -471,24 +471,24 @@ export const SubBlogPage = () => {
             {reviews.map((review, index) => (
               <div
                 key={review._id || index}
-                className="flex gap-4 mb-6 pb-6"
+                className="flex gap-3 sm:gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6"
                 style={{ borderBottom: "1px solid #8B7B5B" }}
               >
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
-                  <span className="text-gray-600 font-semibold">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
+                  <span className="text-gray-600 font-semibold text-sm sm:text-base">
                     {review.name ? review.name.charAt(0).toUpperCase() : "U"}
                   </span>
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h4 className="font-bold text-gray-900 mb-1">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                    <div className="flex-1">
+                      <h4 className="font-bold text-gray-900 mb-1 text-sm sm:text-base">
                         {review.name || "Anonymous"}
                       </h4>
-                      <p className="text-gray-700 mb-2">
+                      <p className="text-gray-700 mb-2 text-sm sm:text-base">
                         {review.thoughts || review.comment}
                       </p>
-                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
                         <span>
                           {review.createdAt
                             ? new Date(review.createdAt).toLocaleDateString(
@@ -507,7 +507,7 @@ export const SubBlogPage = () => {
                       {[1, 2, 3, 4, 5].map((star) => (
                         <SharpStar
                           key={star}
-                          className="w-6 h-6"
+                          className="w-4 h-4 sm:w-6 sm:h-6"
                           style={{
                             color: "#8B7B5B",
                             filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.1))",
@@ -530,16 +530,44 @@ export const SubBlogPage = () => {
         )}
 
         {/* Related Posts Section */}
-        <div className="mb-12">
-          <h2 className="text-4xl font-normal text-gray-900 mb-2">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-gray-900 mb-2">
             Related Posts
           </h2>
           <div
-            className="w-20 h-0.5 mb-6"
+            className="w-20 h-0.5 mb-4 sm:mb-6"
             style={{ backgroundColor: "#8B7B5B" }}
           ></div>
 
-          <div className="flex items-center gap-4">
+          {/* Mobile: Single column layout */}
+          <div className="block sm:hidden">
+            <div className="space-y-4">
+              {relatedPosts.map((relatedPost) => (
+                <BlogCard
+                  key={relatedPost._id}
+                  blog={{
+                    id: relatedPost._id,
+                    title: relatedPost.title,
+                    category: relatedPost.category,
+                    date: new Date(relatedPost.createdAt).toLocaleDateString(
+                      "en-GB",
+                      {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      }
+                    ),
+                    description: relatedPost.description,
+                    image: relatedPost.image_url,
+                    readMore: `/subblog/${relatedPost._id}`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: Horizontal layout with arrows */}
+          <div className="hidden sm:flex sm:items-center gap-4">
             {/* Left Arrow */}
             <button
               className="bg-white p-2 hover:bg-gray-50 flex-shrink-0"

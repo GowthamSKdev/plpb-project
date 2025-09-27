@@ -102,29 +102,29 @@ export const BlogPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[400px] bg-cover bg-center bg-no-repeat" 
+      <div className="relative h-[300px] sm:h-[400px] bg-cover bg-center bg-no-repeat" 
            style={{ backgroundImage: "url('/assets/Images/Blog.png')" }}>
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Browse by Categories Section */}
         <div className="mb-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
             <div className="mb-6 lg:mb-0">
-              <h2 className="text-3xl font-medium text-gray-700 mb-3">Browse by categories</h2>
+              <h2 className="text-2xl sm:text-3xl font-medium text-gray-700 mb-3">Browse by categories</h2>
               <div className="w-32 h-0.5" style={{ backgroundColor: '#78602C' }}></div>
             </div>
             
             {/* Search Bar */}
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <input
                 type="text"
                 placeholder="Search Blogs"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full lg:w-80 px-4 py-3 pr-12 border focus:outline-none focus:ring-1 focus:ring-[#78602C] focus:border-[#78602C] text-base"
+                className="w-full sm:w-80 px-4 py-3 pr-12 border focus:outline-none focus:ring-1 focus:ring-[#78602C] focus:border-[#78602C] text-base"
                 style={{ borderColor: '#78602C', backgroundColor: 'white' }}
               />
               <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: '#78602C' }} />
@@ -133,7 +133,28 @@ export const BlogPage = () => {
 
           {/* Category Tabs */}
           <div className="border mb-8 max-w-7xl mx-auto" style={{ borderColor: '#8B7B5B', backgroundColor: '#F8F8F8' }}>
-            <div className="flex relative py-2">
+            {/* Mobile: Horizontal scroll with chips */}
+            <div className="sm:hidden py-3 px-4">
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {categories.map((category, index) => (
+                  <button
+                    key={category}
+                    onClick={() => handleCategoryChange(category)}
+                    className="flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium text-black hover:bg-gray-100 transition-colors duration-200 whitespace-nowrap"
+                    style={{ 
+                      backgroundColor: selectedCategory === category ? '#8B7B5B' : 'white',
+                      color: selectedCategory === category ? 'white' : 'black',
+                      border: '1px solid #8B7B5B'
+                    }}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            {/* Desktop: Flex layout */}
+            <div className="hidden sm:flex relative py-2">
               {categories.map((category, index) => (
                 <div key={category} className="flex-1">
                   <button
@@ -174,7 +195,7 @@ export const BlogPage = () => {
 
           {/* Blog Posts Grid */}
           {!loading && !error && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 justify-items-center">
               {currentBlogs.map((blog) => (
                 <BlogCard 
                   key={blog._id} 
